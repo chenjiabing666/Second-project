@@ -61,6 +61,11 @@
             android:layout_height="wrap_content"
             android:text="发短信" />
 
+        <Button
+            android:id="@+id/btn_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择菜单选项" />
     </LinearLayout>
 
 
