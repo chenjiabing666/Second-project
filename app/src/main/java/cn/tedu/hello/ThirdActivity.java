@@ -60,4 +60,17 @@ public class ThirdActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    /**
+     * 显示圆形的进度条
+     * @param view
+     */
+    public void showCircle(View view){
+        
+    }
+
+
+
+
 }

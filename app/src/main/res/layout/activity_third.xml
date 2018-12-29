@@ -46,4 +46,18 @@
             android:layout_height="wrap_content"
             />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="showCircle"
+            android:text="显示圆形进度条" />
+
+    </LinearLayout>
 </LinearLayout>
