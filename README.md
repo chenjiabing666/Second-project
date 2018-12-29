@@ -118,6 +118,74 @@
 
 
 
+## 弹出式菜单
+- 弹出式菜单的样式如下：
+![](imageFolder/poup.png)
+
+### 创建选项
+- 在res的包下新建一个menu文件夹，在其中新建一个second.xml（文件名称任意），其中的内容如下：
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/exit"
+        android:title="退出"/>
+    <item android:id="@+id/set"
+        android:title="设置"/>
+    <item android:id="@+id/account"
+        android:title="账号"/>
+</menu>
+```
+
+
+### 新建菜单
+- 在当前的activity中新建一个按钮监听
+```java
+//点击按钮显示弹出式菜单
+        btn_5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /**
+                 * 新建一个弹出式菜单
+                 * 第一个参数是当前的activity
+                 * 第二个参数是当前触发的view
+                 */
+                PopupMenu menu=new PopupMenu(SecondActivity.this,btn_5);
+
+                //加载选项，这里定义文件在//res/second.xml中
+                menu.getMenuInflater().inflate(R.menu.second,menu.getMenu());
+
+                //创建监听选中的事件，只要选项被选中了就能监听到
+                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()){
+                            case R.id.exit:
+                                Toast.makeText(SecondActivity.this,"退出",Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.account:
+                                Toast.makeText(SecondActivity.this,"账号",Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.set:
+                                Toast.makeText(SecondActivity.this,"设置",Toast.LENGTH_SHORT).show();
+                                break;
+                        }
+                        return true;
+                    }
+                });
+                menu.show();  //显示弹出菜单
+            }
+        });
+```
+
+
+
+
+
+
+
+
+
 
 
 

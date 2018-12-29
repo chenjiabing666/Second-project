@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 /**
@@ -15,6 +16,8 @@ import android.widget.Toast;
 public class SecondActivity extends AppCompatActivity {
 
     private Button btn_4;
+    private Button btn_5;
+
 
 
     @Override
@@ -22,9 +25,46 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         btn_4=findViewById(R.id.btn_4);
-
         btn_4.setOnCreateContextMenuListener(this);  //设置长按显示上下文菜单
 
+        btn_5=findViewById(R.id.btn_5);
+
+        //点击按钮显示弹出式菜单
+        btn_5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /**
+                 * 新建一个弹出式菜单
+                 * 第一个参数是当前的activity
+                 * 第二个参数是当前触发的view
+                 */
+                PopupMenu menu=new PopupMenu(SecondActivity.this,btn_5);
+
+                //加载选项，这里定义文件在//res/second.xml中
+                menu.getMenuInflater().inflate(R.menu.second,menu.getMenu());
+
+                //创建监听选中的事件，只要选项被选中了就能监听到
+                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()){
+                            case R.id.exit:
+                                Toast.makeText(SecondActivity.this,"退出",Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.account:
+                                Toast.makeText(SecondActivity.this,"账号",Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.set:
+                                Toast.makeText(SecondActivity.this,"设置",Toast.LENGTH_SHORT).show();
+                                break;
+                        }
+                        return true;
+                    }
+                });
+                menu.show();  //显示弹出菜单
+            }
+        });
     }
 
     /**
@@ -75,6 +115,7 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreateContextMenu(menu, v, menuInfo);
         menu.add(Menu.NONE,1,1,"添加");  //添加一个上下文选项
         MenuItem item = menu.add(Menu.NONE, 2, 2, "删除");
+
     }
 
     /**
@@ -94,4 +135,6 @@ public class SecondActivity extends AppCompatActivity {
         }
         return super.onContextItemSelected(item);
     }
+
+
 }
