@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button btn_3;
 
+    private Button btn_process;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_1 = findViewById(R.id.btn_1);
         btn_2=findViewById(R.id.btn_2);
         btn_3=findViewById(R.id.btn_3);
+        btn_process=findViewById(R.id.btn_process);
         mob_text_view=findViewById(R.id.mob_edit_text);
         sms_text_view=findViewById(R.id.sms_edit_text);
 
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_1.setOnClickListener(this);
         btn_2.setOnClickListener(this);
         btn_3.setOnClickListener(this);
+        btn_process.setOnClickListener(this);
 
         //长按事件
         btn_1.setOnLongClickListener(this);
@@ -76,6 +80,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);  //启动
         }else if(v==btn_3){  //跳到另外一个activity
             Intent intent=new Intent(this,SecondActivity.class);
+            startActivity(intent);
+        }else if(v==btn_process){  //跳到另外一个activity
+            Intent intent=new Intent(this,ThirdActivity.class);
             startActivity(intent);
         }
 

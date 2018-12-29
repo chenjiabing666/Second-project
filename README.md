@@ -179,6 +179,58 @@
 ```
 
 
+## 进度条
+- 效果如下：
+- ![](imageFolder/bar.png)
+
+
+```java
+protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_third);
+
+        ll_progress=findViewById(R.id.ll_progress);
+        bar_1=findViewById(R.id.bar_1);
+        seekBar=findViewById(R.id.seekBar);
+
+        //给seekBar设置监听
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            //进度改变的时候调用
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+            }
+
+            //开始滑竿的时候调用
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            //离开滑竿的时候调用
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                int progress = seekBar.getProgress();  //seekbar的进度
+                bar_1.setProgress(progress); //设置进度
+
+                if (progress==seekBar.getMax()){  //判断是否达到最大值
+
+                    /**
+                     * View.INVISIBLE：不可见，但是占用空间
+                     *  View.GONE：不可见，且不占用空间
+                     */
+                    ll_progress.setVisibility(View.GONE);  //设置不可见
+                }else{  //如果没有达到最大值
+                    ll_progress.setVisibility(View.VISIBLE);  //设置可见
+                }
+            }
+        });
+    }
+```
+
+
+
 
 
 
