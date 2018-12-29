@@ -30,4 +30,24 @@
         android:layout_height="wrap_content"
         android:text="自定义布局对话框"
         android:onClick="showCustom"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="带圆形的对话框"
+        android:onClick="showCircle"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="年月日的对话框"
+        android:onClick="showDate"/>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="时分秒的对话框"
+        android:onClick="showTime"/>
+
 </LinearLayout>

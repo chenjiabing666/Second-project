@@ -1,13 +1,21 @@
 package cn.tedu.hello;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TimePicker;
 import android.widget.Toast;
+
+import java.util.Calendar;
 
 public class DialogActivity extends AppCompatActivity {
 
@@ -114,6 +122,68 @@ public class DialogActivity extends AppCompatActivity {
                     }
                 })
         .show();
+    }
+
+
+    /**
+     * 带圆形的dialog
+     * @param view
+     */
+    public void showCircle(View view){
+        ProgressDialog dialog=ProgressDialog.show(this,"数据加载","数据加载中......");
+        //执行一些业务之后销毁即可
+//        dialog.dismiss();
+
+    }
+
+    /**
+     * 显示带有年月日的dialog
+     * @param view
+     */
+    public  void showDate(View view){
+        Calendar calendar=Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH)+1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        /**
+         * 第一个参数是当前的activity
+         * 第二参数是一个回调，当时间选择完成之后会被调用
+         * 第三个是年
+         * 第四个是月
+         * 第五个是日
+         */
+        DatePickerDialog dialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+//                Toast.makeText(this,"点击了完成...",Toast.LENGTH_SHORT).show();
+                System.out.println("选择了");
+            }
+        }, year, month, day);
+        dialog.setTitle("这是标题");
+        dialog.show();
+    }
+
+
+    /**
+     * 显示时分秒的对话框
+     * @param view
+     */
+    public  void showTime(View view){
+        Calendar calendar=Calendar.getInstance();
+        int hour= calendar.get(Calendar.HOUR_OF_DAY);
+        int second = calendar.get(Calendar.SECOND);
+        int min = calendar.get(Calendar.MINUTE);
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+            }
+        }, hour, min, true);
+
+        timePickerDialog.setTitle("设置时分秒的对话框");  //设置标题
+        timePickerDialog.show();  //显示
+
     }
 
 
